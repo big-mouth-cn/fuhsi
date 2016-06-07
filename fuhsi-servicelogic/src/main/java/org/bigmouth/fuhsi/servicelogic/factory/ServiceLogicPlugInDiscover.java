@@ -26,6 +26,7 @@ import org.bigmouth.fuhsi.servicelogic.interceptor.SessionAware;
 import org.bigmouth.fuhsi.servicelogic.interceptor.SessionInjectInterceptor;
 import org.bigmouth.fuhsi.servicelogic.interceptor.TransactionInterceptor;
 import org.bigmouth.fuhsi.servicelogic.listener.InternelExceptionListener;
+import org.bigmouth.fuhsi.servicelogic.listener.PlugInRegistryListener;
 import org.bigmouth.fuhsi.servicelogic.log.RecordStatusInterceptor;
 import org.bigmouth.fuhsi.servicelogic.statistics.ExtendedServiceStatistics;
 import org.bigmouth.fuhsi.servicelogic.statistics.ServiceLogicMBeanExport;
@@ -271,6 +272,11 @@ public class ServiceLogicPlugInDiscover extends AbstractPlugInDiscover implement
 			throw new PlugInDiscoverException("sessionHolder bean is null.");
 		}
 		plugInCfgMetadata.setSessionHolder(sessionHolder);
+		
+		PlugInRegistryListener plugInRegistryListener = applicationContext.getBean(PlugInRegistryListener.class);
+		if (null != plugInRegistryListener) {
+		    plugInCfgMetadata.addListener(plugInRegistryListener);
+		}
 
 		// check constraint
 		if (!plugInCfgMetadata.existsPlugInCfg()) {

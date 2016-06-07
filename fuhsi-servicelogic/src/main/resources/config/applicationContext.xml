@@ -145,6 +145,9 @@
 	</bean>
 	<bean id="loggingServiceListener" class="org.bigmouth.nvwa.dpl.event.listener.LoggingServiceListener">
 	</bean>
+	<bean id="plugInRegistryListener" class="org.bigmouth.fuhsi.servicelogic.listener.PlugInRegistryListener">
+		<constructor-arg ref="nameCodeDetector" />
+	</bean>
 
 	<!-- dpl status holder -->
 	<bean id="statusHolder" class="org.bigmouth.nvwa.dpl.status.FileSystemStatusHolder">
