@@ -39,6 +39,8 @@ org.bigmouth.fuhsi.servicelogic.ServiceLogicServer
 2016-06-06 16:31:00,543 [INFO] (LoggingPlugInListener.java:57) - PLUGIN[demo-demo,pair,seq] has created.
 ```
 ### 服务生效
+> 已支持自动注册，不需要再人工配置。
+
 插件成功加载到ServiceLogic系统后，还需要使服务生效才能使用，将需要生效的服务配置添加到服务配置（namecode）中，默认存储在ZooKeeper的节点路径：/FUHSI/servicelogic/cluster/namecodes。
 
 使用客户端登录到ZooKeeper，以下两种使用方式：
